@@ -15,9 +15,10 @@ services:
       - ${STORAGE_LOCATION}/laboulette:/dist
     labels:
       - traefik.enable=true
-      - traefik.http.routers.calibre.rule=Host(`laboulette.${DOMAIN_NAME}`)
-      - traefik.http.routers.calibre.tls.certresolver=leresolver
-      - traefik.http.routers.calibre.entrypoints=websecure
+      - traefik.http.routers.laboueltte.rule=Host(`laboulette.${DOMAIN_NAME}`)
+      - traefik.http.routers.laboueltte.tls.certresolver=leresolver
+      - traefik.http.routers.laboueltte.entrypoints=websecure
+      - traefik.http.services.laboueltte.loadbalancer.server.port=80
 
 networks:
   reverse_proxy:
