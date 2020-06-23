@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: yoangau/laboulette-server:latest
+    image: yoangau/laboulette-server:v1.0-beta
     restart: always
     networks:
       - reverse_proxy
