@@ -1,0 +1,12 @@
+[Unit]
+Description=GitHub Webhooks Service
+After=network.target
+
+[Service]
+User=yoangau
+WorkingDirectory=/home/yoangau/cluster/webhooks-service
+ExecStart=/usr/bin/python webhooks-service.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
