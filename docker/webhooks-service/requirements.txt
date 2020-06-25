@@ -1,5 +1,4 @@
 flask
 waitress
 pyyaml
-hashlib
 hmac
