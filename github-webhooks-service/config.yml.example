@@ -1,5 +1,5 @@
 port: # webhooks port
-network: "reverse_proxy"
+network: reverse_proxy
 
 services:
   traefik:
