@@ -1,0 +1,20 @@
+port: # webhooks port
+network: "reverse_proxy"
+
+services:
+  traefik:
+    env:
+      domain_name: # your.registered.domain.com
+      dashboard_user: # create username
+      dashboard_password: # password must be hashed https://bcrypt-generator.com
+      storage_location: # path/to/storage/location
+      dns_challenge_provider: cloudflare # name of your provider example with cloudflare
+      cloudflare_email: your@email.com
+      cloudflare_api_key: s0m3th1ng10ng4ndfu110fnumb3rs
+
+  service_name:
+    secret: # webhook secret
+    env:
+      domain_name: # your.registered.domain.com
+      storage_location: # path/to/storage/location
+      port: # service port
