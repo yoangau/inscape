@@ -1,6 +1,7 @@
 [Unit]
 Description=GitHub Webhooks Service
 After=network.target
+Wants=network.target
 
 [Service]
 User=yoangau
