@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  app:
+    image: ${IMAGE_NAME}
+    restart: always
+    networks:
+      - reverse_proxy
+    env_file:
+      - .env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - ${STORAGE_LOCATION}/expo-gitlab:/dist
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.expo-gitlab.rule=Host(`expo-gitlab.${DOMAIN_NAME}`)
+      - traefik.http.routers.expo-gitlab.tls.certresolver=leresolver
+      - traefik.http.routers.expo-gitlab.entrypoints=websecure
+      - traefik.http.services.expo-gitlab.loadbalancer.server.port=${PORT}
+
+networks:
+  reverse_proxy:
+    external: true
