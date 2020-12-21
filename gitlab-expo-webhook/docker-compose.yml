@@ -11,13 +11,20 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - ${STORAGE_LOCATION}/expo-gitlab:/dist
+      - ${STORAGE_LOCATION}/laboulette:/dist
+    command: 
+      - bash
+      - -c
+      - pip install -r /requirements.txt && python /server.py
+    volumes:
+      - ./requirements.txt:/requirements.txt:ro
+      - ./server.py:/server.py:ro
     labels:
       - traefik.enable=true
-      - traefik.http.routers.expo-gitlab.rule=Host(`expo-gitlab.${DOMAIN_NAME}`)
-      - traefik.http.routers.expo-gitlab.tls.certresolver=leresolver
-      - traefik.http.routers.expo-gitlab.entrypoints=websecure
-      - traefik.http.services.expo-gitlab.loadbalancer.server.port=${PORT}
+      - traefik.http.routers.laboueltte.rule=Host(`laboulette.${DOMAIN_NAME}`)
+      - traefik.http.routers.laboueltte.tls.certresolver=leresolver
+      - traefik.http.routers.laboueltte.entrypoints=websecure
+      - traefik.http.services.laboueltte.loadbalancer.server.port=${PORT}
 
 networks:
   reverse_proxy:
