@@ -18,6 +18,7 @@ services:
       - --global.sendanonymoususage=false
       - --entrypoints.websecure.address=:443
       - --entrypoints.web.address=:80
+      - --entrypoints.web.address=:10000/udp
       - --providers.docker
       - --providers.docker.exposedbydefault=false
       - --providers.docker.network=reverse_proxy
