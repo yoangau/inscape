@@ -8,10 +8,9 @@ services:
       - reverse_proxy
     env_file:
       - .env
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - ${STORAGE_LOCATION}/laboulette:/dist
+    volumes:
+      - ${STORAGE_LOCATION}/laboulette:/db
+      - ./.laboulette.env:/.laboulette.env
     labels:
       - traefik.enable=true
       - traefik.http.routers.laboulette.rule=Host(`laboulette.${DOMAIN_NAME}`)
